@@ -64,6 +64,9 @@ As a user, I want to view edit car info icons from the Vehicle page
 
         WebElement verifyThreeOptions = driver.findElement(By.xpath("(//div[@class='more-bar-holder']/div)[1]"));
         verifyThreeOptions.isDisplayed();
+        
+        Assert.assertTrue(verifyThreeOptions.isDisplayed(), "Displaying hover over three buttons FAILED!");
+        System.out.println("Displaying hover over three buttons - " + verifyThreeOptions.isDisplayed());
 
     }
 
@@ -94,6 +97,9 @@ As a user, I want to view edit car info icons from the Vehicle page
 
         WebElement verifyThreeOptions = driver.findElement(By.xpath("(//div[@class='more-bar-holder']/div)[1]"));
         verifyThreeOptions.isDisplayed();
+        
+        Assert.assertTrue(verifyThreeOptions.isDisplayed(), "Displaying hover over three buttons FAILED!");
+        System.out.println("Displaying hover over three buttons - " + verifyThreeOptions.isDisplayed());
     }
 
     @Test
@@ -122,6 +128,9 @@ As a user, I want to view edit car info icons from the Vehicle page
 
         WebElement verifyThreeOptions = driver.findElement(By.xpath("(//div[@class='more-bar-holder']/div)[1]"));
         verifyThreeOptions.isDisplayed();
+        
+        Assert.assertTrue(verifyThreeOptions.isDisplayed(), "Displaying hover over three buttons FAILED!");
+        System.out.println("Displaying hover over three buttons - " + verifyThreeOptions.isDisplayed());
 
     }
 
