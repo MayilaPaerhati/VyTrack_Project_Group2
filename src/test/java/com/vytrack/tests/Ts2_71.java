@@ -45,7 +45,6 @@ public class Ts2_71 {
         odometerBtn.click();
 
         WebElement errorMsg = driver.findElement(By.xpath("//div[.='You do not have permission to perform this action.']"));
-        errorMsg.isDisplayed();
 
         Assert.assertTrue(errorMsg.isDisplayed(), "Displaying error message as a storemanager FAILED!");
         System.out.println("Displaying error message as a storemanager - " + errorMsg.isDisplayed());
@@ -71,7 +70,6 @@ public class Ts2_71 {
         odometerBtn.click();
 
         WebElement errorMsg = driver.findElement(By.xpath("//div[.='You do not have permission to perform this action.']"));
-        errorMsg.isDisplayed();
 
         Assert.assertTrue(errorMsg.isDisplayed(), "Displaying error message as a storemanager FAILED!");
         System.out.println("Displaying error message as a storemanager - " + errorMsg.isDisplayed());
@@ -97,13 +95,11 @@ public class Ts2_71 {
         odometerBtn.click();
 
         WebElement showOneAsDefault = driver.findElement(By.xpath("//input[@value='1']"));
-        showOneAsDefault.isDisplayed();
 
         Assert.assertTrue(showOneAsDefault.isDisplayed(), "Displaying one as a default FAILED!");
         System.out.println("Displaying one as a default - " + showOneAsDefault.isDisplayed());
 
         WebElement showTwentyFiveAsDefault = driver.findElement(By.xpath("//div[@class='btn-group']/button"));
-        showTwentyFiveAsDefault.isDisplayed();
 
         Assert.assertTrue(showTwentyFiveAsDefault.isDisplayed(), "Displaying twenty five as a default FAILED!");
         System.out.println("Displaying twenty five as a default - " + showTwentyFiveAsDefault.isDisplayed());
