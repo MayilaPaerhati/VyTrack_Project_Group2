@@ -4,6 +4,7 @@ import com.vytrack.utilities.WebDriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -45,6 +46,9 @@ public class Ts2_71 {
 
         WebElement errorMsg = driver.findElement(By.xpath("//div[.='You do not have permission to perform this action.']"));
         errorMsg.isDisplayed();
+
+        Assert.assertTrue(errorMsg.isDisplayed(), "Displaying error message as a storemanager FAILED!");
+        System.out.println("Displaying error message as a storemanager - " + errorMsg.isDisplayed());
     }
 
     @Test
@@ -68,6 +72,9 @@ public class Ts2_71 {
 
         WebElement errorMsg = driver.findElement(By.xpath("//div[.='You do not have permission to perform this action.']"));
         errorMsg.isDisplayed();
+
+        Assert.assertTrue(errorMsg.isDisplayed(), "Displaying error message as a storemanager FAILED!");
+        System.out.println("Displaying error message as a storemanager - " + errorMsg.isDisplayed());
     }
 
     @Test
@@ -92,9 +99,17 @@ public class Ts2_71 {
         WebElement showOneAsDefault = driver.findElement(By.xpath("//input[@value='1']"));
         showOneAsDefault.isDisplayed();
 
+        Assert.assertTrue(showOneAsDefault.isDisplayed(), "Displaying one as a default FAILED!");
+        System.out.println("Displaying one as a default - " + showOneAsDefault.isDisplayed());
+
         WebElement showTwentyFiveAsDefault = driver.findElement(By.xpath("//div[@class='btn-group']/button"));
         showTwentyFiveAsDefault.isDisplayed();
+
+        Assert.assertTrue(showTwentyFiveAsDefault.isDisplayed(), "Displaying twenty five as a default FAILED!");
+        System.out.println("Displaying twenty five as a default - " + showTwentyFiveAsDefault.isDisplayed());
+
         Thread.sleep(2000);
+
     }
 
     @AfterMethod
@@ -102,4 +117,3 @@ public class Ts2_71 {
         driver.quit();
     }
 }
-
