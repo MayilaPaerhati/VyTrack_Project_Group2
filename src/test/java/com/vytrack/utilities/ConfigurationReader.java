@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class ConfigurationReader {
+
     private static Properties properties = new Properties();
 
     static {
@@ -15,6 +16,8 @@ public class ConfigurationReader {
 
             // loads the files into the properties object
             properties.load(file);
+
+            file.close();
 
         }catch(IOException e){
             System.out.println("File not found");
