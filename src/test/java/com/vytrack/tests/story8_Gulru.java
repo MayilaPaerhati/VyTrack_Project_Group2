@@ -119,7 +119,8 @@ public class story8_Gulru {
             String actual = clear.getText();
             String wanted = "This value should not be blank.";
             Thread.sleep(3000);
-            actual.contains(wanted);
+            Assert.assertTrue( actual.contains(wanted));
+
 
         }
         @AfterMethod
