@@ -29,13 +29,13 @@ public class us10_write_description_when_create_calendar_event {
     }
 
     @Test
-    public void drivers_write_description() {
+    public void users_write_description() {
 
         driver.get(ConfigurationReader.getProperty("env"));
 
         // Login: Users are on the homepage
         WebElement inputUsername = driver.findElement(By.id("prependedInput"));
-        inputUsername.sendKeys(ConfigurationReader.getProperty("driver1"));
+        inputUsername.sendKeys(ConfigurationReader.getProperty("salesManager1"));
 
         WebElement inputPassword = driver.findElement(By.xpath("//input[@type='password']"));
         inputPassword.sendKeys(ConfigurationReader.getProperty("password"));
@@ -44,7 +44,7 @@ public class us10_write_description_when_create_calendar_event {
         loginBtn.click();
 
         // Click the “Calendar Events” under the Activities
-        WebElement activities = driver.findElement(By.xpath("(//span[@class='title title-level-1'])[3]"));
+        WebElement activities = driver.findElement(By.xpath("(//div[@id='main-menu']//span[contains(text(), 'Activities')])[1]"));
         activities.click();
 
         WebElement calendarEvents = driver.findElement(By.linkText("Calendar Events"));
@@ -76,54 +76,6 @@ public class us10_write_description_when_create_calendar_event {
 
     }
 
-    @Test
-    public void managers_write_description() {
-
-        driver.get(ConfigurationReader.getProperty("env"));
-
-        // Login: Users are on the homepage
-        WebElement inputUsername = driver.findElement(By.id("prependedInput"));
-        inputUsername.sendKeys(ConfigurationReader.getProperty("salesManager1"));
-
-        WebElement inputPassword = driver.findElement(By.xpath("//input[@type='password']"));
-        inputPassword.sendKeys("UserUser123");
-
-        WebElement loginBtn = driver.findElement(By.xpath("//button[.='Log in']"));
-        loginBtn.click();
-
-        // Click the “Calendar Events” under the Activities
-        WebElement activities = driver.findElement(By.xpath("(//span[@class='title title-level-1'])[5]"));
-        BrowserUtils.sleep(2);
-        activities.click();
-
-        WebElement calendarEvents = driver.findElement(By.xpath("//span[.='Calendar Events']"));
-        BrowserUtils.sleep(2);
-        calendarEvents.click();
-
-        // Click the “Create Calendar Event” button
-        WebElement createCalendarEventBtn = driver.findElement(By.xpath("//a[@title='Create Calendar event']"));
-        BrowserUtils.sleep(2);
-        createCalendarEventBtn.click();
-
-        // Write a message in the Description field
-        driver.switchTo().frame(driver.findElement(By.xpath("//iframe[contains(@id, 'oro')]")));
-
-        WebElement descriptionInput = driver.findElement(By.id("tinymce"));
-        descriptionInput.sendKeys("Sprint2 is start");
-        BrowserUtils.sleep(2);
-
-        // Verify the message is written in the input box
-        WebElement message = driver.findElement(By.xpath("//body[@id = 'tinymce']/p"));
-        String actualMessage = message.getText();
-        BrowserUtils.sleep(2);
-        String expectedMessage = "Sprint2 is start";
-
-        Assert.assertTrue(message.isDisplayed(), "There is no message in input field");
-        Assert.assertEquals(actualMessage, expectedMessage, "Message verification is Failed.");
-
-        driver.switchTo().defaultContent();
-
-    }
 
     @AfterMethod
     public void tearDownMethod(){
