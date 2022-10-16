@@ -1,4 +1,4 @@
-package com.cydeo.tests.myprojects;
+package com.vytrack.tests;
 
 import com.vytrack.utilities.*;
 import com.vytrack.utilities.WebDriverFactory;
