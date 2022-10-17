@@ -2,6 +2,7 @@ package com.vytrack.tests;
 
 import com.vytrack.utilities.WebDriverFactory;
 import org.openqa.selenium.*;
+import org.openqa.selenium.remote.BrowserType;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -24,13 +25,13 @@ public class Salih_US4 {
     }
 
     @Test(priority = 1)
-    public void TC64_AC1(){
+    public void TC64_AC1() throws InterruptedException {
         // Expected Page Title: "All - Vehicle Contract - Entities - System - Car - Entities - System"
 
-        driver.get("https://qa2.vytrack.com/entity/Extend_Entity_VehicleContract");
+        driver.get("https://qa2.vytrack.com/");
 
         WebElement userName1 = driver.findElement(By.xpath("//input[@id='prependedInput']"));
-        userName1.sendKeys("storemanager56");
+        userName1.sendKeys("storemanager55");
 
         WebElement password1 = driver.findElement(By.xpath("//input[@id='prependedInput2']"));
         password1.sendKeys("UserUser123");
@@ -38,23 +39,31 @@ public class Salih_US4 {
         WebElement login = driver.findElement(By.xpath("//button[@id='_submit']"));
         login.click();
 
-        //WebElement actualTitlePage = driver.findElement(By.xpath("//html[@class='desktop-version']/head/title"));
-        String expectedTitle ="All - Vehicle Contract - Entities - System - Car - Entities - System";
-        String actualTitlePage = driver.getTitle();
+        WebElement fleetClick = driver.findElement(By.xpath("//div[@id='main-menu']//li[@class='dropdown dropdown-level-1'][1]"));
+        Thread.sleep(2000);
+        fleetClick.click();
 
-        //System.out.println("actualTitlePage = " + actualTitlePage);
-        //System.out.println("expectedTitle = " + expectedTitle);
-        //Assert.assertEquals(actualTitlePage, expectedTitle);
-        Assert.assertTrue(expectedTitle.contains(actualTitlePage));
+        WebElement vehicleContracts = driver.findElement(By.xpath("(//ul[@class='dropdown-menu dropdown-menu-level-1 menu menu-level-1'])[2]/li[6]/a/span"));
+        Thread.sleep(3000);
+        vehicleContracts.click();
+
+        Thread.sleep(3000);
+
+        String actualTitlePage = driver.getTitle();
+        String expectedTitle ="All - Vehicle Contract - Entities - System - Car - Entities - System";
+
+        Thread.sleep(4000);
+
+        Assert.assertEquals(actualTitlePage, expectedTitle);
         System.out.println("PASSED AC1");
+
     }
 
     @Test (priority = 2)
     public void TC64_AC2() {
-        //WebElement alertMessage = driver.findElement(By.tagName("//div[.='You do not have permission to perform this action.']"));
-        // user7 --- user12 | UserUser123
         // Drivers should NOT able to access the Vehicle contracts page, the app should display, Expected:
-        // "You do not have permission to perform this action."
+        //   "You do not have permission to perform this action."
+
         driver.get("https://qa2.vytrack.com/");
 
         WebElement userName1 = driver.findElement(By.xpath("//input[@id='prependedInput']"));
@@ -69,7 +78,6 @@ public class Salih_US4 {
         WebElement fleetClick = driver.findElement(By.xpath("(//span[@class='title title-level-1'])[1]"));
         fleetClick.click();
 
-        // (//div[@class='dropdown-menu-wrapper dropdown-menu-wrapper__placeholder'])[1]/div/ul/li[6]
         WebElement vehicleContract = driver.findElement(By.xpath("(//div[@class='dropdown-menu-wrapper dropdown-menu-wrapper__placeholder'])[1]/div/ul/li[6]"));
         vehicleContract.click();
 
